@@ -1,3 +1,10 @@
+O arquivo Broker nesse projeto não esta sendo utilizado.
+
+Para trabalhar com esse repositório, basta fazer as instalações das dependências e utilizar o pub.py que será o emissor e os demais arquivos "rasp1.py e rasp2.py"
+simulando o recptor que receberá uma mensagem ou objeto.
+
+O objetivo desse projeto é alimentar uma variável cache toda vez que houver um cadastro na base de dados.
+
 # mqtt
 O projeto / experimento consistirá de uma aplicação Python capaz de escrever na tela todas as mensagens recebidas pelo broker em um determinado tópico.
 
