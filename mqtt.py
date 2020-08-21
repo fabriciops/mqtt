@@ -1,37 +1,42 @@
 import paho.src.paho.mqtt.client as mqtt
+import ssl
 import sys
 
 #definições
 broker = "0.0.0.0"
 portaBroker = 1883
 keepAliveBroker = 60
-topicoSuncribe ="PAHOMQTTRasPi4" #topico de subcribe
+topicoSuncribe ="teste" #topico de subcribe
 
 #callback - conexão ao broker realidade
 def on_connect(client, userdata, flags, rc):
-    print("[STATUS] Conected to the broker. REsult: " +str(rc))
-
-    #maked subscibe automatic on the topic
-    client.subcribe(topicoSuncribe)
+    print("[STATUS] Conected (%s) " % client._client_id)
+    client.subcribe(topic="teste", qos=2)
 
 #calback - message received from the broker
 def on_message( client, userdata, message):
-
-    messageReceived = str(msg.payload)
-
-    print("[MSG RECEIVED] Topic: "+message.topic+" /Message: "+messageReceived)
+    print("-------------------------------")
+    print('topic: %s' % message.topic)
+    print('payload: %s' % message.payload)
+    print('qos: %s' % message.qos)
+    
 
 def main():
         
     try:
         print("[STATU] Starting MQTT...")
         client = mqtt.Client()
+        # client = mqtt.Client(client_id='Fabricio', clean_session=False)
         client.on_connect = on_connect
         client.on_message = on_message
-
         client.connect(broker, portaBroker, keepAliveBroker)
         client.loop_forever()
 
     except KeyboardInterrupt:
         print("\Ctrl+c stop system")
         sys.exit(0)
+
+#main
+
+main()
+
