@@ -1,5 +1,5 @@
 # publisher
-import paho.src.paho.mqtt.client as mqtt
+import paho.mqtt.client as mqtt
 
 client = mqtt.Client()
 client.connect('localhost', 1883)
