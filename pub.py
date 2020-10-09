@@ -11,7 +11,8 @@ import paho.mqtt.client as mqtt
 # }
 
 client = mqtt.Client()
-client.connect('mqtt.eclipse.org', 1883)
+client.connect('localhost', 8080)
+# client.connect('mqtt.eclipse.org', 1883)
 
 while True:
     

@@ -33,8 +33,9 @@ def init_mqtt(client,mqtt_host,mqtt_port,mqtt_uid,mqtt_password):
     client.connect(mqtt_host, int(mqtt_port))
 
 def main():
-    mqtt_host="mqtt.eclipse.org"
-    mqtt_port="1883"
+    mqtt_host="localhost"
+    # mqtt_host="mqtt.eclipse.org"
+    mqtt_port="8080"
     mqtt_uid=""
     mqtt_password=""
     #Connection initiated
