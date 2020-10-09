@@ -3,21 +3,9 @@ import asyncio
 from hbmqtt.broker import Broker
 from hbmqtt.client import MQTTClient, ClientException
 from hbmqtt.mqtt.constants import QOS_1
+from config import config as config
 
 logger = logging.getLogger(__name__)
-
-config = {
-    'listeners': {
-        'default': {
-            'type': 'tcp',
-            'bind': 'localhost:1883'    # 0.0.0.0:1883
-        }
-    },
-    'sys_interval': 10,
-    'topic-check': {
-        'enabled': False
-    }
-}
 
 broker = Broker(config)
 

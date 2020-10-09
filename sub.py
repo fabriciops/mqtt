@@ -21,28 +21,33 @@ def on_disconnect(client, userdata, rc):
     client.disconnect_flag=True
 
 def on_message(client, userdata, message):
+
     print("message received  ",str(message.payload))
     print("message topic  ",str(message.topic))
+    client.connected_flag=False
 
 def init_mqtt(client,mqtt_host,mqtt_port,mqtt_uid,mqtt_password):
     mqtt.Client.connected_flag=False
-    #client.username_pw_set(username=mqtt_uid,password=mqtt_password)
+    client.username_pw_set(username=mqtt_uid,password=mqtt_password)
     client.on_connect = on_connect  
     client.on_subscribe=on_subscribe
     client.on_message=on_message
     client.connect(mqtt_host, int(mqtt_port))
 
 def main():
-    mqtt_host="localhost"
-    # mqtt_host="mqtt.eclipse.org"
-    mqtt_port="8080"
+    
+    #Utilizando broker local
+    # mqtt_host="localhost"
+
+    #Utilizando a API do eclipse
+    mqtt_host="mqtt.eclipse.org"
+    mqtt_port="1883"
     mqtt_uid=""
     mqtt_password=""
+    
     #Connection initiated
     init_mqtt(client,mqtt_host,mqtt_port,mqtt_uid,mqtt_password)
     client.loop_forever()
-
-
 
 if __name__ == "__main__": 
     main()

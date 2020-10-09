@@ -11,9 +11,24 @@ import paho.mqtt.client as mqtt
 # }
 
 client = mqtt.Client()
-client.connect('localhost', 8080)
-# client.connect('mqtt.eclipse.org', 1883)
 
-while True:
-    
-    client.publish("mqtt/fabricio", input('Message : '))
+#Montar broker
+# client.connect('localhost', 8080)
+
+#Utilizando a API do eclipse
+client.connect('mqtt.eclipse.org', 1883)
+
+def sendMessage(message):
+
+    msg = message
+    client.publish("mqtt/fabricio", (msg))
+    main()
+
+def main():
+
+    msg = input("message: ")
+    sendMessage(msg)
+
+
+if __name__ == "__main__": 
+    main()
